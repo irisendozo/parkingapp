@@ -1,0 +1,16 @@
+<div class="parking-list">
+    <app-parking-info *ngIf="selectedParkingSpace" [parkingSpace]="selectedParkingSpace"></app-parking-info>
+    <md-card>
+        <md-list>
+            <h2 md-subheader class="parking-list-header">Parking Capacity Status</h2>
+            <md-list-item *ngFor="let parkingSpace of parkingSpaces" (click)="selectParkingSpace(parkingSpace)"> 
+                <i class="material-icons parking-list-status--free" *ngIf="parkingSpace.freeSpace > 0">check_circle</i>
+                <i class="material-icons parking-list-status--full" *ngIf="parkingSpace.freeSpace <= 0">cancel</i>
+                <h3 md-line class="parking-list-item-title"> {{ parkingSpace.name }} </h3>
+                <p md-line>
+                    <span class="parking-list-item-subtitle"> Parking Status: {{ parkingSpace.freeSpace }} / {{ parkingSpace.capacity }} </span>
+                </p>
+            </md-list-item>
+        </md-list>
+    </md-card>
+</div>

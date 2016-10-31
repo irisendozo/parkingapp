@@ -1,0 +1,27 @@
+<div class="parking-info">
+    <md-card>
+        <md-card-title> {{ parkingSpace.name }} </md-card-title>
+        <md-card-subtitle class="parking-info-subtitle parking-info-status--free" *ngIf="parkingSpace.freeSpace > 0">  Available slots as of <strong>{{ today | date:"hh:mm:ss" }}</strong>: {{ parkingSpace.freeSpace }} slots</md-card-subtitle>
+        <md-card-subtitle class="parking-info-subtitle parking-info-status--full" *ngIf="parkingSpace.freeSpace <= 0">  There are no free spaces for this parking lot as of <strong> {{ today | date:"hh:mm:ss" }} </strong></md-card-subtitle>
+        <md-card-subtitle class="parking-info-subtitle">  Total capacity : {{ parkingSpace.capacity }} slots </md-card-subtitle>
+        <sebm-google-map [latitude]="parkingSpace.geodata.latitude" 
+                         [longitude]="parkingSpace.geodata.longitude"
+                         [zoom]="15"
+                         [mapDraggable]="false" 
+                         [disableDoubleClickZoom]="true" 
+                         [scrollwheel]="false" 
+                         [zoomControl]="false" 
+                         [usePanning]="true">
+            <sebm-google-map-marker [latitude]="parkingSpace.geodata.latitude" 
+                                    [longitude]="parkingSpace.geodata.longitude"
+                                    [openInfoWindow]="true">
+                <sebm-google-map-info-window [isOpen]="true">
+                    <i class="material-icons parking-info-status--free" *ngIf="parkingSpace.freeSpace > 0">check_circle</i>
+                    <i class="material-icons parking-info-status--full" *ngIf="parkingSpace.freeSpace <= 0">cancel</i>
+                    <strong> {{ parkingSpace.name }} </strong><br>
+                    Parking Status: {{ parkingSpace.freeSpace }} / {{ parkingSpace.capacity }}
+                </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+        </sebm-google-map>
+    </md-card>
+</div>
