@@ -1,5 +1,5 @@
 <div class="parking-list">
-    <md-card>
+    <md-card class="parking-list-spaces">
         <md-list>
             <h2 md-subheader class="parking-list-header">Parking Capacity Status</h2>
             <md-list-item *ngFor="let parkingSpace of parkingSpaces" (click)="selectParkingSpace(parkingSpace)">
@@ -16,5 +16,5 @@
             <button md-raised-button color="accent" *ngIf="parkingSpaces && !loading" (click)="getParkingSpaces()">Load more</button>
         </md-card-actions>
     </md-card>
-    <app-parking-info *ngIf="selectedParkingSpace" [parkingSpace]="selectedParkingSpace"></app-parking-info>
+    <app-parking-info class="parking-list-detail" *ngIf="selectedParkingSpace" [parkingSpace]="selectedParkingSpace"></app-parking-info>
 </div>
