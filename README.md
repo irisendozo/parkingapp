@@ -22,6 +22,7 @@ This development server of this project requires installing angular-cli.
 ## Architecture
 
 The project follows the following project structure:
+```
 ├── src/
 │ ├── app/
 │ │ ├── common/
@@ -55,7 +56,7 @@ The project follows the following project structure:
 │── angular-cli.json
 │── package.json
 │── tslint.json
-
+```
 This project is in Angular 2 + Typescript. It follows the best practices pushed forward by the Angular team. The root module
 is the AppModule (app.module). Two custom modules were also created. One is ParkingList (parking-list.component) which displays
 the list of parking spaces obtained from the API. The other is ParkingInfo (parking-info.component) which displays specific
