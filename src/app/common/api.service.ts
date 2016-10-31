@@ -9,9 +9,10 @@ export class ApiService {
 
   constructor (private http: Http) { }
 
-  getParkingSpaces (): Observable<ParkingSpace[]> {
+  getParkingSpaces (page): Observable<ParkingSpace[]> {
+    const items = 10;
     const apiUrl =
-      `http://api.citysdk.waag.org/layers/parking.garage/objects`;
+      `http://api.citysdk.waag.org/layers/parking.garage/objects?per_page=${items}&page=${page}`;
 
     return this.http.get(apiUrl)
                .map(this.extractData)

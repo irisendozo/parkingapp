@@ -9,20 +9,28 @@ import { ApiService } from '../common/api.service';
   styleUrls: ['./parking-list.component.less']
 })
 export class ParkingListComponent implements OnInit {
-  parkingSpaces: ParkingSpace[];
+  parkingSpaces: ParkingSpace[] = [];
   selectedParkingSpace: ParkingSpace;
   errorMessage: string;
+  loading: boolean;
   mode = 'Observable';
 
   constructor(private apiService: ApiService) { }
 
-  ngOnInit() { this.getParkingSpaces(); }
+  ngOnInit() {
+    this.getParkingSpaces();
+  }
 
   getParkingSpaces() {
-    this.apiService.getParkingSpaces()
+    const page = (this.parkingSpaces.length / 10) + 1;
+
+    this.loading = true;
+
+    this.apiService.getParkingSpaces(page)
         .subscribe(
-          parkingSpaces => this.parkingSpaces = parkingSpaces,
-          error => this.errorMessage = <any>error);
+          parkingSpaces => this.parkingSpaces = this.parkingSpaces.concat(parkingSpaces),
+          error => this.errorMessage = <any>error,
+          () => this.loading = false);
   }
 
   selectParkingSpace(parkingSpace: ParkingSpace) {

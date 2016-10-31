@@ -3,6 +3,12 @@
 
     md-card {
         margin: 20px;
+        overflow-y: scroll;
+        height: 500px;
+    }
+
+    md-card-actions {
+        text-align: center;
     }
 
     &-header {
@@ -20,9 +26,10 @@
     }
 
     &-spinner {
+        display: block;
+        margin: 0 auto;
         height: 30px;
         width: 30px;
-        display: inline-block;
     }
 
     &-list {
