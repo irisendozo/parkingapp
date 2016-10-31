@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ParkingSpace } from '../common/parking-space';
 
 @Component({
@@ -6,14 +6,10 @@ import { ParkingSpace } from '../common/parking-space';
   templateUrl: './parking-info.component.html',
   styleUrls: ['./parking-info.component.less']
 })
-export class ParkingInfoComponent implements OnInit {
+export class ParkingInfoComponent {
+  // Get the selected parking space from parent component, parking-list
   @Input() parkingSpace: ParkingSpace;
+
+  // Get the date today
   today: Date = new Date();
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
 }
