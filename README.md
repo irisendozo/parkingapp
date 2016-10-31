@@ -8,10 +8,16 @@ render the geodata of each lot's latitude and longitude.
 
 This project requires Node 4 or higher, together with NPM 3 or higher.
 
-## Running the Application
+## Running the Production-version Application
 
-1. Run `npm run start` for a server. 
-2. Navigate to `http://localhost:4200/`.
+1. Install dependencies by running `npm install`.
+2. Run `npm run serve:production` for a server. 
+3. Navigate to `http://localhost:4200/`.
+
+## Running the Development server
+
+This development server of this project requires installing angular-cli.
+1. Install it by running `npm install -g angular-cli`.
 
 ## Architecture
 
